@@ -24,7 +24,7 @@ function loginUser() {
     }
     
     // Send the login request to the server
-    fetch('http://tokaido.proxy.rlwy.net:20007/login', {
+    fetch("https://notes-webapp-for-android-production.up.railway.app/login", {
     method: 'POST',
     headers: {
     'Content-Type': 'application/json',
