@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">   
+        <!--css links-->   
+        <link rel="stylesheet" href="notes.css">
+       
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Warang+Citi&display=swap" rel="stylesheet">
+       
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Linear+B&display=swap" rel="stylesheet">
+    </head><body>
+    
+<div class="container"> 
+  <button class="cir-but" onclick="togglenote()"><b><big>❤</big></b></button>
+  <header>
+    <button type="button" class="delete" ><tt> delete</tt></button>
+  </header>
+  <div id="popup" class="popup">
+    <div class="popup-message"> </div>
+      <button onclick="closePopup()" id="close-popup-btn" type="button">close</button>
+  </div>
+  <div id="custom-confirm" class="confirm-dialog">
+    <div class="confirm-content">
+      <p id="confirm-message">Are you sure you want to delete
+        all notes?
+      </p>
+      <div class="confirm-buttons">
+        <button id="confirm-yes" class="btn">Yes</button>
+  <button id="confirm-no" class="btn">No</button>
+      </div>
+    </div>
+   </div>   
+<div id="note-lists" class="note-lists">
+</div>
+
+    <div class="note-container">
+      <div class="note-header">  
+<a  class="backbutton" onclick="savenote()"><big><tt>↵</tt></big></a>
+<button type="button"  class="savebutton" onclick="savenote()"><tt>save</tt></button>  
+</div><br>
+<input type="text" class="title-input" placeholder="enter title ♡₊˚ 🦢・₊✧ ">
+ <br><hr color="pink" >
+<div class="note-area">
+  <div id="popup" class="popup">
+    <div class="popup-message"> </div>
+      <button onclick="closePopup()" id="close-popup-btn" type="button">close</button>
+  </div>
+<div class="note-text" contenteditable="true">
+</div> </div>
+<div class="foot">
+<button type="button" id="bold" class="bold">𝓑</button> 
+<button type="button" id="italic" class="italic">𝓘</button>
+<button type="button" id="underline" class="underline">𝓤</button>
+<button type="button" id="list" class="list"><b class="noto-sans-warang-citi-regular">𑣿</b></button>
+<button type="button" id="monospace" class="monospace">𝓜</button>
+</div>
+</div> 
+</div>
+
+
+<!--javascript links-->
+<script src="notes.js"></script>
+    </body>
+</html>

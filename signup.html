@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head> <title>home page</title>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width,initial-scale=1.0">   
+     <!--css links-->   
+<link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Warang+Citi&display=swap" rel="stylesheet">
+ 
+ <link rel="stylesheet" href="sign.css">
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Linear+B&display=swap" rel="stylesheet">
+
+ 
+ <!--js link-->
+ <script src="sign.js"></script>
+
+</head>
+     <body>
+        <div class="container">
+            <img src="icons/minjeongie.jpg" class="minjeong" width="230" height="">
+            <div class="signup">
+                <form onsubmit="submitForm(event)">
+            <label for="username" class="aespafont"><b style="color:rgba(37, 31, 32, 0.507);">
+            <b class="noto-sans-warang-citi-regular" style="font-size: 23px;color:rgba(0, 0, 0, 0.712);"><i>𑣿.</i>  </b>username .</label>
+            <input style="background-color:#F6F2F3;border-color: #f7d7e346;width:120px" type="username" id="username" name="username"><br>
+            <label><tt>password</tt></label><br>
+            <input style="background-color:#F6F2F3;border-color: #f7d7e325;width:120px" type="password" id="password" name="password">
+            <br><tt>make sure of a 6+<br><tt style="position: absolute;top:149px;">char password </tt>.</tt> <br>
+            <br> <button type="submit" class="aespafont"><b>signup <b class="noto-sans-linear-b-regular">.𐀶 </b> </button></b>
+       </form>
+        </div>
+        </div>
+        <div id="popup" class="popup">
+            <div id="popup-message"> </div>
+            <button onclick="document.getElementById('popup').classList.remove('active')">close </button>
+        </div>
+       <div class="credit">
+        <img class="knife"src="icons/coquetteknife.png" width="30">
+        <tt>made by @pearlyfic from discord</tt>
+    </div>  
+     </body> </html>

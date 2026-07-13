@@ -1,0 +1,450 @@
+@font-face {
+    font-family: 'aespa Display';
+    src:url('aespa_Display.ttf')
+    format('truetype');
+  }
+  .aespafont{
+    font-family: 'aespa Display',sans-serif;
+  }
+  .noto-sans-warang-citi-regular {
+    font-family: "Noto Sans Warang Citi", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .noto-sans-linear-b-regular {
+    font-family: "Noto Sans Linear B", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  html , body {
+    cursor: url('icons/cursor.png'),auto;
+    margin: 0; padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    width: 100% ;
+    height: 100%;
+    background-image: url();
+    background-size: cover;
+    background-position: absolute;
+    background-repeat: no-repeat;
+    background-color: white;
+    border: 1px solid #fae0e8;
+    position: absolute;
+    overflow: hidden;
+}
+.container {
+    width: 100%;
+    height: 100%;
+
+    background-color: white;
+    border: 1px solid #fae0e8;
+
+    position: fixed;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scrollbar-width: 39px;
+    scrollbar-color: #ffb6d9 #ffe8f4;
+}
+/* Baby pink scrollbar */
+.container::-webkit-scrollbar{
+    width: 30px;
+}
+
+.container::-webkit-scrollbar-track{
+    background: #ffe8f4;
+    border-radius: 20px;
+}
+
+.container::-webkit-scrollbar-thumb{
+    background: linear-gradient(
+        180deg,
+        #ffd6eb,
+        #ffb6d9
+    );
+    border-radius: 20px;
+    border: 2px solid #ffe8f4;
+}
+
+.container::-webkit-scrollbar-thumb:hover{
+    background: linear-gradient(
+        180deg,
+        #ffc6e5,
+        #ff9fcd
+    );
+}
+.cir-but{
+    background-color: #E3C2E9;
+    border-color: transparent white;
+    position: fixed;
+    border: 4px solid white;
+    bottom: 120px;
+    color:rgb(243, 143, 189);
+    left: 75%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, border-color 0.3 ease;
+    box-shadow: 0 5px 8px rgb(245, 240, 244);
+    z-index: 1;
+    cursor: url('icons/cursor.png'),auto;
+} .cir-but:hover{
+    border-color: #E3C2E9;
+}
+.cir-but:active{
+    background-color: #c9a7baf1;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+header{
+    background-color :rgb(255, 223, 245);
+    width:100%;
+    height:25px;
+
+}
+.delete{
+    background-color: #fcd0e6;
+    border-color: #f7cbdc;
+    position: absolute;
+    right:0px;
+    height:25px;
+}
+.note-lists {
+    margin-top: 11px;
+    padding:16px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+    overflow-x:hidden;
+    height: calc(100vh-52px);
+    cursor: url('icons/cursor.png');
+}
+
+.note-card{
+    font-family: "Noto Sans Warang Citi", serif;
+    font-weight: 400;
+    font-style: normal;
+
+    background-color: #fcd7e8;
+    border: 1px solid pink;
+    border-radius: 10px;
+    padding: 12px;
+
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+    width: 100%;
+    box-sizing: border-box;
+
+    height: 90px;          /* Fixed height */
+    min-height: 90px;
+    max-height: 90px;
+
+    flex-shrink: 0;        /* Prevent shrinking */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    overflow: hidden;
+    position: relative;
+
+    cursor: url('icons/cursor.png'), auto;
+
+}
+.delete-note {
+    align-self: flex-end;
+    position: absolute;
+    font-family: monospace;
+    border-radius: 50px;
+    background-color: #fae0ea;
+    border-color: #ffc6dc;
+box-shadow: 1px 4px 7px rgba(110, 65, 99, 0.836);
+cursor: grab;
+}
+.note-card button:hover{
+    background-color: #fae0ea;
+}
+.note-card h3{
+    font-size: 18px;
+    margin : 0;
+    white-space: nowwrap;
+    color:rgba(0, 0, 0, 0.418);
+    font-family: Bradley Hand ITC;
+}
+.note-card p{
+    font-size: 13px;
+    margin: 5px 0 0;
+    color: black;
+    display:-webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+
+}
+.note-card.editing{
+    border:2px solid #E3C2E9;
+    background-color: white;
+    cursor: url('icons/cursor.png');
+}
+
+.note-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100% ;
+    height: 100%;
+background-image: url('icons/notepage.jpg');
+background-size:7%;
+background-position:center;
+padding:20px;
+box-sizing: border-box;
+overflow: hidden;
+padding:11;
+
+    
+}
+.note-container.visible {
+    display: block;
+}
+.note-header{
+    width:100%;
+    height:24px;
+    background-color: #ffc6dc;
+    position: absolute;
+    display:flex;
+    top:0px;
+    left:0px;
+padding: 0 0px;
+z-index:10;
+}
+.backbutton {
+text-decoration: none;
+font-size: 21px;
+color: rgba(128, 128, 128, 0.582);
+position: absolute;
+left: 7px;
+cursor:grab;
+} .backbutton:hover{
+    color: #f6defa;
+}
+.savebutton{
+background-color: #f1dce7a1;
+border-color: #fabedca1;
+height:24px;
+position:absolute;
+right: 0px;
+cursor:grab;
+}
+.title-input{
+    width: 100%;
+    position: absolute;
+    top: 29px;
+    left: 0px;
+    background-color: transparent;
+    border-color: transparent;
+    font-size: larger;
+    font-family: Bradley Hand ITC;
+}
+.title-input:focus{
+    border-color: transparent;
+    outline: none;
+}
+.title-input::placeholder{
+    font-family: Bradley Hand ITC ;
+}
+.note-area{
+    position:sticky;
+}
+.note-text {
+    font-family: "Noto Sans Warang Citi", serif;
+font-weight: 400;
+font-style: normal;
+    position: fixed;
+    width:96%;
+    height: 85%;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: transparent;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    scrollbar-width: 30px;
+    scrollbar-color: #eec9f5 #fddbf0;
+    color:rgba(12, 1, 10, 0.699);
+    word-wrap: break-word;
+}
+.note-text[contenteditable=true]{
+    outline: none;
+}
+.note-container.visible{
+    display:block;
+   
+}
+.note-container{
+    display:none;
+}
+.note-text::-webkit-scrollbar{
+    width: 8px;
+}
+.note-text::-webkit-scrollbar-track{
+    background: #fddbf0;
+}
+.note-text::-webkit-scrollbar-thumb:hover{
+    background: #c9a7baf1;
+}
+.note-text::-webkit-scrollbar-thumb {
+    background-color: #c9a7baf1; /* Scrollbar thumb color */
+}
+.foot{
+    background-color: rgb(255, 202, 237);
+    width: 100%;
+    height: 25px;
+    position: absolute;
+    left:0px;
+    bottom:0px;
+    display:flex;
+}
+.bold{
+    height:25px;
+    width:40px;
+    background-color: #E3C2E9;
+    border-color: #E3C2E9;
+    position: absolute;
+    left:0px;
+    cursor: grab;
+    
+}
+.list{
+    height:25px;
+    width:40px;
+    background-color: #E3C2E9;
+    border-color: #E3C2E9;
+    position: absolute;
+    right:0px;
+    cursor: grab;
+    font-size: large;
+}
+.italic {
+    background-color: #E3C2E9;
+    border-color: #E3C2E9;
+    position: absolute;
+    left:40px;
+    height: 25px;
+    width:40px;
+    cursor: grab;
+}
+.underline{
+    background-color: #E3C2E9;
+    border-color: #E3C2E9;
+    position: absolute;
+    left: 80px;
+    height:25px;
+    width:40px;
+    cursor: grab;
+}
+.monospace{
+    background-color: #E3C2E9;
+    border-color: #E3C2E9;
+    position: absolute;
+    left: 120px;
+    height:25px;
+    width:40px;
+    cursor: grab;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  padding: 20px;
+  background-color: #f8edf0;
+  border: 1px dotted pink;
+  border-radius: 8px;
+box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+z-index: 1000;
+text-align: center;
+  }
+  .popup.active{
+    display:block;
+  }
+  .popup-message {
+    margin-bottom: 1px;
+    width:150px;
+    height:70px;
+    font-family: monospace;
+  }
+  .popup button{
+    position: absolute;
+    top:80px;
+    margin-top: 0px;
+    left:65px;
+    background-color: #fae0e8;
+    border: dotted pink;
+    padding: 5px 10px;
+    cursor: url('icons/cursor.png'),auto;
+  }
+  .popup button:hover{
+    background-color: #f8edf0;
+  }
+  
+.confirm-dialog{
+    position: absolute;
+    top:200px;
+    left:110px;
+width: 190px;
+display: none;
+border-radius: 50%;
+justify-content: center;
+align-items: center;
+font-family: monospace;
+z-index: 1000;
+background: rgba(0,0,0,0.5);
+}
+.confirm-content{
+    background: #f7cbdc;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 1px 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 300px;
+}
+.confirm-buttons {
+    margin-top: 15px;
+    display:flex;
+    justify-content:space-around;
+    
+}.btn{
+    padding:8px 15px;
+    border :none;
+    border-radius:5px;
+    border:3px solid pink;
+cursor: url('icons/cursor.png'),auto;
+font-size:12px;
+}
+.btn::cursor{
+    background-color: pink;
+    color:pink;
+}
+.btn:hover{
+    background-color: #fdedfa;
+}
+#confirm-yes{
+    background-color: #fcd7e8;
+    color:black
+}
+#confirm-no{
+    background-color: #fcd7e8;
+    color:black;
+}

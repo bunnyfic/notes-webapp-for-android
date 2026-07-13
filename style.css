@@ -1,0 +1,249 @@
+html , body {
+     cursor: url('icons/cursor.png'),auto;
+    margin: 0; padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.container {
+    width: 100% ;
+    height: 100%;
+    background-color: white;
+    border: 1px solid #fae0e8;
+    position: relative;
+    overflow: hidden;
+}
+.header {
+    width: 100%;
+    height: 23px;
+    background-color: #ffe9f8;
+    font-weight: bold ;
+    display:flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    padding:0;
+}
+.menu-btn{
+    border-radius: 4px;
+    padding: 2px 5px;
+    border-radius: 4px;
+    position:relative ;
+}
+.menu-btn:hover {
+    background-color: #fae0e8;
+    border-color: #fae0e8;
+}
+.dropdown{
+    position: relative;
+}
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top:25px;
+    left :0;
+    background-color: #f8edf0;
+    border-color: 1px solid #fae0e8;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100px;
+    box-shadow: 0 4px 5px rgb(241, 183, 210);
+}
+.dropdown-menu li{
+    padding: 1px;
+
+}
+.dropdown-menu li a {
+    text-decoration: none;
+    color : black;
+    display: block;
+}
+.dropdown-menu li:hover {
+    background-color: pink;
+}
+.dropdown-menu.show{
+    display: block;
+}
+.menu-left{
+    display:flex;
+    gap: 5px;
+}
+.small-container {
+width: 240px;
+height: 240px;
+justify-content: center;
+display:flex;
+background-image: url('icons/box.png');
+background-size: cover;
+background-position: center;
+}
+.small-container input {
+    transition: border-color 0.2 ease;
+    width: 170px;
+    height:23px;
+}
+.small-container input:focus{
+    border-color: #f8edf0;
+    outline: none;
+} 
+
+footer{
+    background-color: pink;
+    width:100%;
+    height:249px;
+    position: relative;
+}
+.about-menu{
+    display: none;
+    position: absolute;
+    top: 23px;
+    left: 105px;
+    width: 283px;
+    height:190px;
+    padding:0px;
+    background-color: white;
+    box-shadow: 0 4px 5px rgba(211, 152, 179, 0.37);
+    
+}
+.about-menu tt{
+    margin : 0 10px 0;
+}
+.credit-menu {
+    display: none;
+    position :absolute;
+    top:25px;
+    border: 4px dotted pink;
+    left:102px;
+    width: 210px;
+    height:50px;
+    background-color: t rgb(250, 232, 247);
+    padding:10px;
+    box-shadow: 0 12px 15px rgba(211, 152, 178, 0.623)  ;
+}
+.horizontal-menu {
+    display:flex;
+    justify-content: center;
+    gap:30px;
+    margin-bottom: 10px;
+}
+.tab-item{
+    display:flex;
+    position: relative;
+    gap:30px;
+    cursor: pointer;
+}
+.tab1{
+    position: absolute;
+    top:43px;
+    left:6px;
+}
+.tab2{
+position: absolute;
+top:43px;
+left:86px;
+}
+.tab3{
+    position: absolute;
+    top:43px;
+    left:164px;
+}
+.tab-icon{
+    width:50px;
+    height:50px;
+    position: relative;
+    left:0px;
+    top:-5px;
+    cursor:pointer;
+    transition: transform 0.2s ease;
+}
+.tab-icon:hover {
+transform: scale(1.3);
+}
+.tabs{
+    display:none;
+}
+.tab-content{
+    display:none;
+    background-color: #f8edf0;
+    padding:10px;
+    border: 1px solid #f8edf0;
+    text-align: center;
+}
+.tab-content.show{
+    display:block;
+}
+#bunnyfloat {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+#bunnycontainer{
+    position:fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.bunny{
+    position : absolute;
+    font-size: small;
+    animation: floatUp 4s ease-in-out forwards;
+    opacity : 1;
+}
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity :1;
+    }
+    100% {
+        transform: translateY(-500px);
+        opacity: 0;
+    }
+}
+.noto-sans-warang-citi-regular {
+    font-family: "Noto Sans Warang Citi", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .popup {
+    display:none;
+    position:absolute;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  padding: 20px;
+  background-color: #f8edf0;
+  border: 1px dotted pink;
+  border-radius: 8px;
+box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+z-index: 1000;
+text-align: center;
+  }
+  .popup.active{
+    display:block;
+  }
+  .popup-message {
+    margin-bottom: 1px;
+    width:150px;
+    height:70px;
+    font-family: monospace;
+  }
+  .popup button{
+    position: absolute;
+    top:80px;
+    margin-top: 0px;
+    left:65px;
+    background-color: #fae0e8;
+    border: dotted pink;
+    padding: 5px 10px;
+    cursor:pointer;
+  }
+  .popup button:hover{
+    background-color: #f8edf0;
+  }
+  
+
