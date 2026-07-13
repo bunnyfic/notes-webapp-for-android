@@ -2,7 +2,9 @@ const express = require("express");
 const mysql = require("mysql2");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+app.use(cors());
 require("dotenv").config();
+const path = require("path");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -11,6 +13,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
+app.use(express.static(__dirname));
 //mysql connection
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -22,7 +25,7 @@ const db = mysql.createConnection({
 
 db.connect((err)=>{
     if (err){
-        console.error("Error connecting to MySQL : , err");
+        console.error("Error connecting to MySQL :" , err);
     } else{
         console.log("connected to MySQL");
     }
@@ -295,8 +298,10 @@ app.post("/update-note", (req, res) => {
 });
 
 
-
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "front.html"));
+});
 
 app.listen(port, ()=> {
-    console.log(`server running on http://localhost:${port}`);
+   console.log(`Server running on port ${port}`);
 });
