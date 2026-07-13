@@ -44,7 +44,7 @@ document.getElementById("list").addEventListener("click", function () {
 
 // Function to fetch the current user's username and display a welcome popup
 function welcomeUser() {
-  fetch("http://localhost:3000/current-user")
+ fetch("https://notes-webapp-for-android-production.up.railway.app/current-user")
       .then((response) => response.json())
       .then((data) => {
           if (data.success) {
@@ -115,7 +115,7 @@ function savenote() {
   if (currentNoteCard) {
     // Update existing note
     const noteId = currentNoteCard.dataset.id; // Assuming the card has a `data-id` attribute
-    fetch("http://localhost:3000/update-note", {
+   fetch("https://notes-webapp-for-android-production.up.railway.app/update-note", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -162,7 +162,7 @@ function savenote() {
     noteLists.appendChild(noteCard);
 
     // Save the new note to the database
-    fetch("http://localhost:3000/save-note", {
+    fetch("https://notes-webapp-for-android-production.up.railway.app/save-note", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -199,7 +199,7 @@ function savenote() {
    
 // Fetch and display all notes for the logged-in user
 function fetchNotes() {
-  fetch("http://localhost:3000/get-notes")
+ fetch("https://notes-webapp-for-android-production.up.railway.app/get-notes")
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
@@ -239,7 +239,7 @@ function deleteNote(noteCard) {
   const noteId = noteCard.dataset.id;
 
   // Send delete request to the server
-  fetch("http://localhost:3000/delete-note", {
+ fetch("https://notes-webapp-for-android-production.up.railway.app/delete-note", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -269,7 +269,7 @@ window.addEventListener("DOMContentLoaded", () => {
 //function to delete all notes
 function deleteAllNotes() {
   // Send a request to the server to delete all notes
-  fetch("http://localhost:3000/delete-all-notes", {
+  fetch("https://notes-webapp-for-android-production.up.railway.app/delete-all-notes", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
