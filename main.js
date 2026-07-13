@@ -25,7 +25,7 @@ document.getElementById("underline").addEventListener("click", function() {
 
 // Fetch notes from backend and display them
 function fetchNotes(user_id) {
-  fetch(`http://localhost:3000/get-notes/${user_id}`)
+  fetch(`https://notes-webapp-for-android-production.up.railway.app/get-notes/${user_id}`)
     .then(response => response.json())
     .then(data => {
       if (data.success) {
@@ -60,7 +60,7 @@ function editnote(noteCard, note_id) {
   currentNoteCard = noteCard; // Store the reference to the current note card
 
   // Fetch the note details from the backend
-  fetch(`http://localhost:3000/get-notes/${note_id}`)
+  fetch(`https://notes-webapp-for-android-production.up.railway.app/get-notes/${note_id}`)
     .then(response => response.json())
     .then(data => {
       if (data.success) {
@@ -95,7 +95,7 @@ function savenote() {
     updateNote(note);
   } else {
     // Save new note
-    fetch("http://localhost:3000/add-note", {
+    fetch("https://notes-webapp-for-android-production.up.railway.app/add-note", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -118,7 +118,7 @@ function savenote() {
 
 // Function to update an existing note
 function updateNote(note) {
-  fetch("http://localhost:3000/update-note", {
+  fetch("https://notes-webapp-for-android-production.up.railway.app/update-note", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
@@ -138,7 +138,7 @@ function updateNote(note) {
 function deleteNote(note_id) {
   const user_id = 1; // Replace with actual logged-in user's ID
 
-  fetch("http://localhost:3000/delete-note", {
+  fetch("https://notes-webapp-for-android-production.up.railway.app/delete-note", {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json"
@@ -159,7 +159,7 @@ function deleteNote(note_id) {
 function deleteAllNotes() {
   const user_id = 1; // Replace with actual logged-in user's ID
 
-  fetch("http://localhost:3000/delete-all-notes", {
+  fetch("https://notes-webapp-for-android-production.up.railway.app/delete-all-notes", {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json"
