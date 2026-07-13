@@ -4,10 +4,14 @@ working on the deployment : https://notes-webapp-for-android-production.up.railw
 
 📝 Notes App
 
+
+
 A modern and responsive Notes App that allows users to create, edit, and delete notes with a cute coquette interface. The application is deployed on Railway, making it accessible from anywhere with an internet connection.
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+
+
 ✨ Features
 
 - 📝 Create new notes
