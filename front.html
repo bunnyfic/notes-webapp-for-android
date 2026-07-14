@@ -38,7 +38,10 @@
 <small><br><br><br><br>
 <input id="username" text="text" placeholder="enter username"size="18" style="background-color: #fddaf8; border-color: #fddaf8;font-family: 'papyrus',fantasy; height:16px">
 <br><tt style="display:block;text-align:left; margin-left: 0;color:rgb(160, 105, 131);">𖦹๋࣭ ⭑ֶָ֢♡ password ֶָ֢⭒♡⊹<big style="font-size: 20px;">&#78837</big></tt><br>
-<input size="14" style="background-color: #fddaf8; border-color: #fddaf8;position:relative;top:-15px;" type="text" id="password" oninput="updatepassword(event)" >
+<span style="position:relative; display:inline-block; top:-15px;">
+<input size="14" style="background-color: #fddaf8; border-color: #fddaf8; color:transparent; caret-color: rgb(160,105,131); width:100%; box-sizing:border-box;" type="password" id="password" autocomplete="off" oninput="updatepassword(event)" >
+<span id="password-mask" aria-hidden="true" style="position:absolute; top:0; left:0; width:100%; height:100%; display:flex; align-items:center; padding-left:2px; box-sizing:border-box; pointer-events:none; overflow:hidden; white-space:nowrap; color:rgb(160,105,131); font-size:13px;"></span>
+</span>
 <br>
 <button style="background-color: #f5e4f2;border-color: #FEF7FD;" type="button" onclick="loginUser()"><big>⊹꒰ᐢ. .ᐢ꒱｡⋆</big></button>
 </small>
