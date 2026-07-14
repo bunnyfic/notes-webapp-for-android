@@ -15,19 +15,48 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 app.use(express.static(__dirname));
 //mysql connection
-const db = mysql.createConnection({
+// Using a pool instead of a single connection: Railway's MySQL will close idle
+// connections, and a single createConnection() silently dies when that happens,
+// causing every query after the first idle period to fail.
+const db = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     port: process.env.DB_PORT,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0,
 });
 
-db.connect((err)=>{
+// Make sure the tables the app depends on actually exist.
+// (This was likely the real cause of signup failing: the `users` table
+// was probably never created on the Railway database.)
+db.query(`
+  CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL
+  )
+`, (err) => {
+    if (err) console.error("Error ensuring users table exists:", err);
+});
+
+db.query(`
+  CREATE TABLE IF NOT EXISTS currentuser (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL
+  )
+`, (err) => {
+    if (err) console.error("Error ensuring currentuser table exists:", err);
+});
+
+db.getConnection((err, connection) => {
     if (err){
         console.error("Error connecting to MySQL :" , err);
     } else{
         console.log("connected to MySQL");
+        connection.release();
     }
 });
 
@@ -146,10 +175,25 @@ app.get("/current-user", (req, res) => {
     });
   });
 */
+// Only letters, numbers, and underscores are allowed in a per-user table name.
+// This blocks SQL injection via the username and avoids breaking on
+// spaces, hyphens, or reserved words. Throws if the username is unsafe.
+function safeTableName(username) {
+    if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+        throw new Error(`Unsafe table name derived from username: ${username}`);
+    }
+    return `\`notes_${username}\``; // prefixed + backtick-quoted
+}
+
 // Create a table for the currently logged-in user (if it doesn't exist)
 function createTableForUser(username, callback) {
-    const tableName = `${username}`;
-  
+    let tableName;
+    try {
+        tableName = safeTableName(username);
+    } catch (e) {
+        return callback(e);
+    }
+
     const createTableQuery = `
       CREATE TABLE IF NOT EXISTS ${tableName} (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -210,8 +254,14 @@ app.post("/delete-note", (req, res) => {
     }
 
     const username = currentUserResults[0].username;
+    let tableName;
+    try {
+        tableName = safeTableName(username);
+    } catch (e) {
+        return res.status(400).json({ success: false, message: "Invalid username for table lookup" });
+    }
 
-    const deleteQuery = `DELETE FROM ${username} WHERE id = ?`;
+    const deleteQuery = `DELETE FROM ${tableName} WHERE id = ?`;
     db.query(deleteQuery, [id], (err) => {
       if (err) {
         console.error("Error deleting note:", err);
@@ -230,9 +280,15 @@ app.get("/get-notes", (req, res) => {
     }
 
     const username = currentUserResults[0].username;
+    let tableName;
+    try {
+        tableName = safeTableName(username);
+    } catch (e) {
+        return res.status(400).json({ success: false, message: "Invalid username for table lookup" });
+    }
 
     // Fetch notes for the logged-in user from their table
-    const fetchNotesQuery = `SELECT * FROM ${username}`;
+    const fetchNotesQuery = `SELECT * FROM ${tableName}`;
     db.query(fetchNotesQuery, (err, notes) => {
       if (err) {
         console.error("Error fetching notes:", err);
@@ -252,7 +308,12 @@ app.post("/delete-all-notes", (req, res) => {
     }
 
     const username = currentUserResults[0].username;
-    const userTable = `${username}`;
+    let userTable;
+    try {
+        userTable = safeTableName(username);
+    } catch (e) {
+        return res.status(400).json({ success: false, message: "Invalid username for table lookup" });
+    }
 
     // Delete all notes and reset AUTO_INCREMENT
     const deleteNotesQuery = `TRUNCATE TABLE ${userTable}`;
@@ -279,9 +340,15 @@ app.post("/update-note", (req, res) => {
     }
 
     const username = currentUserResults[0].username;
+    let tableName;
+    try {
+        tableName = safeTableName(username);
+    } catch (e) {
+        return res.status(400).json({ success: false, message: "Invalid username for table lookup" });
+    }
 
     // Update the note in the user's table
-    const updateQuery = `UPDATE ${username} SET title = ?, content = ? WHERE id = ?`;
+    const updateQuery = `UPDATE ${tableName} SET title = ?, content = ? WHERE id = ?`;
     db.query(updateQuery, [title, content, id], (err, results) => {
       if (err) {
         console.error("Error updating note:", err);
