@@ -1,22 +1,34 @@
-// password prompt
-// The real <input type="password"> holds the actual value and gets full native
-// mobile keyboard behavior (autocorrect, predictive text, swipe-typing, backspace,
-// selection, autofill all just work). This function only updates the purely
-// visual flower overlay sitting on top of it — it never touches input.value,
-// so it can't fight the keyboard the way the old version did.
+// password promt
+let actualpassword="";
 function updatepassword(event){
     const input = document.getElementById('password');
-    const mask = document.getElementById('password-mask');
-    if (mask) {
-        mask.textContent = '✿'.repeat(input.value.length);
+    const newValue = input.value;
+    const cursorPos = input.selectionStart;
+    const oldLength = actualpassword.length;
+
+    if (newValue.length > oldLength) {
+        // characters were inserted (typing, autocorrect, paste, predictive text)
+        const insertedCount = newValue.length - oldLength;
+        const insertPos = Math.max(0, cursorPos - insertedCount);
+        const insertedChars = newValue.substring(insertPos, cursorPos);
+        actualpassword = actualpassword.slice(0, insertPos) + insertedChars + actualpassword.slice(insertPos);
+    } else if (newValue.length < oldLength) {
+        // characters were deleted (backspace, delete, autocorrect replace)
+        const deletedCount = oldLength - newValue.length;
+        actualpassword = actualpassword.slice(0, cursorPos) + actualpassword.slice(cursorPos + deletedCount);
     }
+
+    input.value = '✿'.repeat(actualpassword.length);
+    // restore cursor position, since mobile keyboards jump it to the start
+    // after the value is programmatically reset
+    input.setSelectionRange(cursorPos, cursorPos);
 }
 
 
 
 function loginUser() {
     const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value; // Use the actual password entered by the user
+    const password = actualpassword; // Use the actual password entered by the user
     
     // Make sure both username and password are provided
     if (!username || !password) {
