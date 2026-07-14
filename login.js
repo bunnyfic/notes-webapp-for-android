@@ -1,21 +1,22 @@
-// password promt
-let actualpassword="";
+// password prompt
+// The real <input type="password"> holds the actual value and gets full native
+// mobile keyboard behavior (autocorrect, predictive text, swipe-typing, backspace,
+// selection, autofill all just work). This function only updates the purely
+// visual flower overlay sitting on top of it — it never touches input.value,
+// so it can't fight the keyboard the way the old version did.
 function updatepassword(event){
-    const input= document.getElementById('password');
-    let inputvalue = input.value;
-if (inputvalue.length > actualpassword.length){
-    actualpassword += inputvalue[inputvalue.length-1];
-} else {
-    actualpassword=actualpassword.slice(0,-1);
-}
-input.value= '✿'.repeat(actualpassword.length);
+    const input = document.getElementById('password');
+    const mask = document.getElementById('password-mask');
+    if (mask) {
+        mask.textContent = '✿'.repeat(input.value.length);
+    }
 }
 
 
 
 function loginUser() {
     const username = document.getElementById('username').value;
-    const password = actualpassword; // Use the actual password entered by the user
+    const password = document.getElementById('password').value; // Use the actual password entered by the user
     
     // Make sure both username and password are provided
     if (!username || !password) {
@@ -59,6 +60,3 @@ function loginUser() {
         const popup = document.getElementById('popup');
         popup.classList.remove('active');
       }
-    
-    
-
