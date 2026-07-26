@@ -2,7 +2,8 @@
 
 working on the deployment : https://notes-webapp-for-android.onrender.com 
 
-since im using free trail the database needs to be manually turned on aiven. 
+since im using free trail the mysql database needs to be manually turned on aiven. so let me know if you're interested in using this. I chose mysql database because the connector was pretty easy to use back in 2021 meaning this project is pretty old and runs on outdated versions of techs. 
+
 
 📝 Notes App
 
