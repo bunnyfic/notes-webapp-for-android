@@ -70,7 +70,6 @@ http://localhost:3000
 
 📸 Screenshots
 
-Include screenshots or a short demo GIF of the application.
 
 🔮 Future Enhancements
 
