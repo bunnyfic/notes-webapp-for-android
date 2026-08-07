@@ -69,7 +69,8 @@ http://localhost:3000
 
 
 📸 Screenshots
-<img width="702" height="1600" alt="image" src="https://github.com/user-attachments/assets/043d2eef-a2e9-4dd5-9078-9f079232db13" />
+
+<img width="702" height="1300" alt="image" src="https://github.com/user-attachments/assets/043d2eef-a2e9-4dd5-9078-9f079232db13" />
 <img width="702" height="1600" alt="image" src="https://github.com/user-attachments/assets/f7092496-fd78-433c-9f50-c6650f2d3c35" />
 <img width="702" height="1600" alt="image" src="https://github.com/user-attachments/assets/70442a29-7863-414e-b191-9ac660d9c876" />
 
